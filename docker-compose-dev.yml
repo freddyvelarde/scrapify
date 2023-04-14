@@ -11,6 +11,7 @@ services:
     networks:
       - scrapify-network
 
+  # flask server scrapper
   scrapper:
     container_name: flask-scrapper
     build:
@@ -27,7 +28,18 @@ services:
       FLASK_DEBUG: development
       FLASK_APP: server.py
       DB_URL: postgresql://postgres:postgres@flask_db:5432/postgres
-    # command: python3 main.py
+
+  web-client:
+    container_name: nextjs
+    build:
+      context: ./scrapify-app/web-scrapify
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+    volumes:
+      - ./scrapify-app/web-scrapify:/app
 
 networks:
   scrapify-network:
