@@ -25,9 +25,9 @@ services:
     environment:
       PORT: 5000
       FLASK_DEBUG: development
-      FLASK_APP: main.py
+      FLASK_APP: server.py
       DB_URL: postgresql://postgres:postgres@flask_db:5432/postgres
-    command: python3 main.py
+    # command: python3 main.py
 
 networks:
   scrapify-network:
