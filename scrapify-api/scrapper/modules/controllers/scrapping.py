@@ -1,13 +1,14 @@
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify, make_response
 import requests
 from bs4 import BeautifulSoup
+from modules.config.stores_websites import ebay_store
 
-app = Flask(__name__)
+scrapping_bp = Blueprint("scrapping", __name__)
 
 
-@app.route("/search/<item>")
-def search(item):
-    url = f"https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw={item}&_sacat=0"
+@scrapping_bp.route("/search/<product>")
+def search(product):
+    url = ebay_store(product)
 
     response = requests.get(url)
 
@@ -29,9 +30,9 @@ def search(item):
                 }
             )
 
-    return res
+    return make_response(jsonify(res), 200)
 
 
-@app.route("/")
+@scrapping_bp.route("/")
 def index():
     return jsonify({"message": "hello world from docker and nginx"})
