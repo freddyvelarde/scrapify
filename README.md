@@ -4,3 +4,7 @@ Scrapify is a reliable and efficient web scraper designed specifically for elect
 
 - ebay
 - wallmart
+
+## Endpoints:
+
+- [x] Search products: `/search/<product>` GET

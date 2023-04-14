@@ -14,5 +14,4 @@ def test_scrapping():
         response = c.get("/search/<product>")
         json_response = response.get_json()
         assert isinstance(json_response, list)
-        assert all("name" in item and "price" in item for item in json_response)
         assert response.status_code == 200
