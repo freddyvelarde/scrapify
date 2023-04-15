@@ -22,14 +22,15 @@ def search(product):
                 and link.get("class")[0] == "s-item"
                 and link.find("span").get("role") is not None
             ):
-                res.append(
-                    {
-                        "product": f'{link.find("a").get("href")}',
-                        "image": f'{link.find("img").get("src")}',
-                        "title": f'{link.find("span").text}',
-                        "price": f'{link.find("span", attrs={"class": "s-item__price"}).text}',
-                    }
-                )
+                if link.find("span").text != "Shop on eBay":
+                    res.append(
+                        {
+                            "product": f'{link.find("a").get("href")}',
+                            "image": f'{link.find("img").get("src")}',
+                            "title": f'{link.find("span").text}',
+                            "price": f'{link.find("span", attrs={"class": "s-item__price"}).text}',
+                        }
+                    )
 
         return make_response(jsonify(res), 200)
     except ValueError as error:
