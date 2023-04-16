@@ -30,6 +30,8 @@ services:
 
   web-client:
     container_name: nextjs
+    networks:
+      - scrapify-network
     build:
       context: ./scrapify-app/web-scrapify
       dockerfile: Dockerfile.dev
