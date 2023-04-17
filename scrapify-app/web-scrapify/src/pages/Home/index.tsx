@@ -17,7 +17,7 @@ export default function HomeSection() {
   };
 
   return (
-    <div className="bg-color2">
+    <div className="">
       <HeadComponent title="Scrapify" />
       <SearchForm
         handleInputChange={handleInputChange}
