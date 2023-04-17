@@ -6,15 +6,26 @@ interface ProductListProps {
 
 export function ProductList({ products }: ProductListProps) {
   return (
-    <div className="bg-color3 flex flex-wrap justify-evenly">
+    <div className="flex flex-wrap justify-evenly">
       {products.map((product, index) => (
-        <div key={index} className="bg-color2 m-3 w-96 h-96">
-          <p>title: {product.title}</p>
-          <img src={product.image} alt={product.title} />
-          <a href={product.product} rel="noopener noreferrer" target="_blank">
-            product
-          </a>
-          <p>price: {product.price}</p>
+        <div key={index} className="bg-color2 m-3 w-96 h-96 rounded-sm">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-2/5 w-full object-cover"
+          />
+          <div className="m-2 flex flex-col justify-between h-2/4">
+            <p className="mb-2">{product.title}</p>
+            <p>price: {product.price}</p>
+            <a
+              href={product.product}
+              className="bg-color1 p-3"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Check it out
+            </a>
+          </div>
         </div>
       ))}
     </div>
