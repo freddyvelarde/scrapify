@@ -1,4 +1,5 @@
 import { Data } from "@/interfaces/data";
+import data from "../data/endpointsApi";
 import { useState } from "react";
 
 interface StoreData {
@@ -17,9 +18,7 @@ export default function useStoreData() {
       if (item.length < 1) {
         return setStoreData({ data: [], message: "type some product" });
       }
-      const request = await fetch(
-        `http://localhost/api/scrapper/search/${item}`
-      );
+      const request = await fetch(`${data.products}${item}`);
       const jsonResponse = await request.json();
       setStoreData({ data: jsonResponse, message: "products:" });
       console.log("ready...");

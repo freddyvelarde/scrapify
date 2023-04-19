@@ -1,5 +1,5 @@
 from flask import Flask
-from modules.controllers.scrapping import scrapping_bp
+from modules.controllers.store import scrapping_bp
 from flask_cors import CORS
 
 app = Flask(__name__)
