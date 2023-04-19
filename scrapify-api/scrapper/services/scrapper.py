@@ -22,6 +22,7 @@ def alibaba_scrapper(product):
                     "image": f'{link.find("img").get("src")}',
                     "title": f'{link.find("a", attrs={"class": "product-title"}).find_all("span")[1].text}',
                     "price": f'{link.find("div", attrs={"class": "product-price"}).find_all("span")[0].text}',
+                    "store": "https://www.alibaba.com",
                 }
             )
         return products
@@ -52,9 +53,14 @@ def ebay_scrapper(product):
                             "image": f'{link.find("img").get("src")}',
                             "title": f'{link.find("span").text}',
                             "price": f'{link.find("span", attrs={"class": "s-item__price"}).text}',
+                            "store": "https://www.ebay.com",
                         }
                     )
         return products
 
     except ValueError as error:
         print(error)
+
+
+def store_scrapper(product):
+    return ebay_scrapper(product) + alibaba_scrapper(product)
