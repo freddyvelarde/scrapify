@@ -5,3 +5,4 @@ Scrapify is a reliable and efficient web scraper designed specifically for elect
 ## Endpoints:
 
 - [x] Search products: `/search/<product>` GET
+- [x] Fetching the most bought categories: `/search/<product>` GET
