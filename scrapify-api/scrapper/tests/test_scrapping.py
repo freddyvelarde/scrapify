@@ -9,9 +9,17 @@ def test_foo():
         assert response.status_code == 200
 
 
-def test_scrapping():
+def test_search_products():
     with app.test_client() as c:
         response = c.get("/search/<product>")
         json_response = response.get_json()
         assert isinstance(json_response, list)
+        assert response.status_code == 200
+
+
+def test_categories():
+    with app.test_client() as c:
+        response = c.get("/categories")
+        json_response = response.get_json()
+        assert isinstance(json_response, dict)
         assert response.status_code == 200
