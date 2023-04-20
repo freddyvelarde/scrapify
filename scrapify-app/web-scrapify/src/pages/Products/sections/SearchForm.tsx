@@ -15,6 +15,7 @@ export default function SearchForm({
     >
       <input
         type="text"
+        placeholder="Search products"
         onChange={handleInputChange}
         className="text-color1 text-sm md:text-base w-full sm:w-96"
       />

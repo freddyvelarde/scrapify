@@ -3,6 +3,7 @@ import HeadComponent from "@/components/Head";
 import SearchForm from "./sections/SearchForm";
 import useStoreData from "@/hooks/useStoreData";
 import { ProductList } from "./sections/ProductList";
+import { CategoryProductList } from "./sections/CategoryProductList";
 
 export default function Products() {
   const [searchValue, setSearchValue] = useState("");
@@ -23,7 +24,11 @@ export default function Products() {
         handleInputChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
       />
-      <ProductList products={storeData.data} />
+      {storeData.dataObtained ? (
+        <ProductList products={storeData.data} />
+      ) : (
+        <CategoryProductList />
+      )}
     </div>
   );
 }
