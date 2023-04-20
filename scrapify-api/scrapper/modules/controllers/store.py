@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, make_response
 from services.scrapper import store_scrapper
+import redis as redis_modules
 
 scrapping_bp = Blueprint("scrapping", __name__)
 
@@ -37,6 +38,15 @@ def categories():
         return make_response(
             jsonify({"message": "error getting products", "error": f"{error}"}), 500
         )
+
+
+@scrapping_bp.route("/redis")
+def redis():
+    redis_client = redis_modules.Redis(host="cache", port=6379, db=0)
+    redis_client.set("username", "fredvel59")
+    return make_response(
+        jsonify({"username": redis_client.get("username").decode()}), 200
+    )
 
 
 @scrapping_bp.route("/")

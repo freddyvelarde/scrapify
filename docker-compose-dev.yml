@@ -28,6 +28,18 @@ services:
       FLASK_DEBUG: development
       FLASK_APP: server.py
 
+  cache:
+    container_name: cache
+    image: redis:6.2-alpine
+    restart: always
+    networks:
+      - scrapify-network
+    ports:
+      - "6379:6379"
+    # command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - redis-cache:/data
+
   web-client:
     container_name: nextjs
     networks:
@@ -44,3 +56,6 @@ services:
 
 networks:
   scrapify-network:
+
+volumes:
+  redis-cache:
