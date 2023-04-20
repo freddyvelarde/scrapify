@@ -21,5 +21,5 @@ def test_categories():
     with app.test_client() as c:
         response = c.get("/categories")
         json_response = response.get_json()
-        assert isinstance(json_response, dict)
+        assert isinstance(json_response, list)
         assert response.status_code == 200

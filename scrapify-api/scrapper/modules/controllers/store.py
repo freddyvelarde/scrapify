@@ -25,9 +25,11 @@ def categories():
             "Mobile Electronics Accessories",
             "LED lights",
         ]
-        response_products = {}
+        response_products = []
         for product in products:
-            response_products[product] = store_scrapper(product)
+            response_products.append(
+                {"product": product, "data": store_scrapper(product)}
+            )
 
         return make_response(jsonify(response_products), 200)
 
