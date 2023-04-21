@@ -44,9 +44,7 @@ export function CategoryProductList() {
     <div>
       <button
         onClick={() => {
-          // console.log(categories.productsByCategory);
           for (const cat of categories.productsByCategory) {
-            // console.log(cat["product"]);
             console.log(cat.product);
             console.log(cat.data);
           }
