@@ -6,9 +6,9 @@ interface ProductListProps {
 
 export function ProductList({ products }: ProductListProps) {
   return (
-    <div className="flex flex-wrap justify-evenly">
+    <div className="mx-5 flex flex-wrap justify-around">
       {products.map((product, index) => (
-        <div key={index} className="bg-color2 m-3 w-96 h-96 rounded-sm">
+        <div key={index} className="bg-color2 my-3 w-96 h-96 rounded-sm">
           <img
             src={product.image}
             alt={product.title}

@@ -24,6 +24,7 @@ export default function Products() {
         handleInputChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
       />
+      <hr />
       {storeData.dataObtained ? (
         <ProductList products={storeData.data} />
       ) : (

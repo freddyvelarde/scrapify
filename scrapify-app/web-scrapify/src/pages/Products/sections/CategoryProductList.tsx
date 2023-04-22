@@ -42,20 +42,13 @@ export function CategoryProductList() {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          for (const cat of categories.productsByCategory) {
-            console.log(cat.product);
-            console.log(cat.data);
-          }
-        }}
-      >
-        Fetch products
-      </button>
-      <hr />
       {categories.productsByCategory.map((category, index) => (
         <div key={index}>
-          <h1>{category["product"]}</h1>
+          <div className="m-5 flex justify-center">
+            <span className="bg-color3 py-2 px-3 text-color1">
+              {category["product"]}
+            </span>
+          </div>
           <ProductList products={category.data} />
         </div>
       ))}
